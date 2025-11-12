@@ -14,13 +14,15 @@ function AboutMe() {
 function Portfolio() {
   const [clicked, setClick] = useState(false);
   return (
-    <button onClick={()=>setClick(true)}className="text-shadow-xs px-5 py-2 border-1 border-solid rounded-xs transition ease-in-out duration-20 hover:text-orange-800">
-      Portfolio
-    {clicked &&
-    <div>
-    </div>
-    }
-    </button>
+  <button
+    onClick={() => {
+      const section = document.getElementById("portfolio-section");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }}
+    className="px-5 py-2 border rounded hover:text-orange-800 transition"
+  >
+    Portfolio
+  </button>
   );
 }
 
@@ -58,7 +60,6 @@ function RecentPushes() {
         setEvents(pushes.slice(0, 5)); // show latest 5 pushes
       });
   }, []);
-
   return (
     <div className="mt-10">
       <ul className="flex">
@@ -68,6 +69,41 @@ function RecentPushes() {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function ProjectsDisplay() {
+  return (
+    <div className="text-2xl absolute top-50">
+      <div className="flex py-5">
+      <button className="px-5">
+        Bash (C)
+      </button>
+      <button className="px-5">
+        Irc Server (C++)
+      </button>
+      <button className="px-5">
+        Multithreading (C)
+      </button>
+      <button className="px-5">
+        Merge-Insertion algorithm (C++)
+      </button>
+      </div>
+      <div className="flex py-5">
+      <button className="px-5">
+        Downhill (C)
+      </button>
+      <button className="px-5">
+        Irc Server (C++)
+      </button>
+      <button className="px-5">
+        Multithreading (C)
+      </button>
+      <button className="px-5">
+        Merge-Insertion algorithm (C++)
+      </button>
+      </div>
     </div>
   );
 }
@@ -91,13 +127,38 @@ function LinkBar() {
 }
 
 export default function App() {
-  const [site, setSite] = useState(0);
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-orange-100 text-orange-700 text-shadow-2xs text-5xl font-bold">
-      Mikko Suokas | Junior Developer
-      <NavBar />
-      <LinkBar />
-      <RecentPushes />
+    <div className="bg-orange-100 text-orange-700 text-shadow-2xs text-5xl font-bold">
+      <section id="home-section" className="min-h-screen flex flex-col items-center justify-center">
+        Mikko Suokas | Junior Developer
+        <NavBar />
+        <LinkBar />
+        <RecentPushes />
+      </section>
+      <section
+        id="portfolio-section"
+        className="min-h-screen flex flex-col items-center justify-center relative"
+      >
+        <button
+          onClick={() => {
+            const section = document.getElementById("home-section");
+            if (section) section.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="absolute top-4 right-4 text-2xl px-5 py-2 border rounded hover:text-orange-300 transition">
+            Return
+        </button>
+        <h2 className="absolute top-10 text-4xl mb-8 border rounded px-5 py-2 text-orange-400">My Projects</h2>
+        <ProjectsDisplay />
+      </section>
+      <section
+        id="about-section"
+        className="min-h-screen flex flex-col items-center justify-center"
+      >
+        <h2 className="text-4xl mb-8">About Me</h2>
+        <p className="text-xl max-w-lg text-center">
+          Hi, I’m Mikko, a junior developer passionate about building web apps...
+        </p>
+      </section>
     </div>
   );
 }
