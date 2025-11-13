@@ -75,34 +75,18 @@ function RecentPushes() {
 
 function ProjectsDisplay() {
   return (
-    <div className="text-2xl absolute top-50">
-      <div className="flex py-5">
-      <button className="px-5">
-        Bash (C)
-      </button>
-      <button className="px-5">
-        Irc Server (C++)
-      </button>
-      <button className="px-5">
-        Multithreading (C)
-      </button>
-      <button className="px-5">
-        Merge-Insertion algorithm (C++)
-      </button>
+    <div className="text-2xl absolute top-50 [&>*]:flex [&>*]:justify-center">
+      <div className="[&>*]:border-2 [&>*]:border-orange-400 [&>*]:rounded [&>*]:px-5 [&>*]:py-5 flex py-5 space-x-5 [&>*]:hover:text-orange-300 [&>*]:hover:border-orange-300">
+        <button> Bash_replicate (C) </button>
+        <button> Irc_Server (C++) </button>
+        <button> Multithreading (C) </button>
+        <button> Merge-Insertion algorithm (C++) </button>
       </div>
-      <div className="flex py-5">
-      <button className="px-5">
-        Downhill (C)
-      </button>
-      <button className="px-5">
-        Irc Server (C++)
-      </button>
-      <button className="px-5">
-        Multithreading (C)
-      </button>
-      <button className="px-5">
-        Merge-Insertion algorithm (C++)
-      </button>
+      <div className="[&>*]:border-2 [&>*]:border-orange-400 [&>*]:rounded [&>*]:px-5 [&>*]:py-5 flex py-5 space-x-5">
+        <button> Ghostrider (C) </button>
+        <button> PhoneFixBay (C++) </button>
+        <button> Launchpad (C) </button>
+        <button> Merge-Insertion algorithm (C++) </button>
       </div>
     </div>
   );
